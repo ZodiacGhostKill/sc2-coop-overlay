@@ -15,12 +15,11 @@ class MainWindow(QWidget):
         self.setWindowFlags(
             Qt.WindowType.FramelessWindowHint
             | Qt.WindowType.WindowStaysOnTopHint
-            | Qt.WindowType.Window
+            | Qt.WindowType.Tool
         )
 
+        # translucent background so our panel can be alpha-blended
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
-        self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
-        self.setFocus()
 
         panel = QFrame(self)
         panel.setObjectName("overlayPanel")
@@ -35,7 +34,7 @@ class MainWindow(QWidget):
 
         self._label_time = QLabel("Game Time: --:--")
         self._label_next = QLabel("Next: (not wired yet)")
-        self._label_debug = QLabel("")
+        self._label_debug = QLabel("F10: dump capture | F7: calibrate clock rect")
 
         self._label_time.setStyleSheet("font-size: 20px; color: black;")
         self._label_next.setStyleSheet("font-size: 14px; color: black;")
@@ -54,10 +53,9 @@ class MainWindow(QWidget):
         root.addWidget(panel)
         self.setLayout(root)
 
-        # UI refresh: fast and cheap now (no OCR here)
         self._timer = QTimer(self)
         self._timer.timeout.connect(self._tick)
-        self._timer.start(50)  # 20 FPS label refresh; smooth seconds
+        self._timer.start(50)
 
         self._tick()
 
@@ -65,15 +63,5 @@ class MainWindow(QWidget):
         _t_game_s, mmss = self._clock.display_time()
         self._label_time.setText(f"Game Time: {mmss}")
 
-    def keyPressEvent(self, event) -> None:
-        if event.key() == Qt.Key.Key_Escape:
-            self.close()
-            return
-
-        if event.key() == Qt.Key.Key_F10:
-            path = self._clock.dump_capture_png()
-            raw = self._clock.last_raw_text().replace("\n", " ")
-            self._label_debug.setText(f"F10 dump: {path} | OCR: {raw!r}")
-            return
-
-        super().keyPressEvent(event)
+    def set_debug_text(self, text: str) -> None:
+        self._label_debug.setText(text)
