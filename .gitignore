@@ -14,3 +14,5 @@ Thumbs.db
 
 # Overlay debug captures
 .debug/
+
+config.json
