@@ -16,3 +16,6 @@ Thumbs.db
 .debug/
 
 config.json
+
+# Repo snapshot output (never commit)
+tools/repo_snapshot.txt
