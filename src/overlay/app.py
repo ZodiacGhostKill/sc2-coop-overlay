@@ -2,11 +2,13 @@ from __future__ import annotations
 
 import ctypes
 import sys
+from pathlib import Path
 
 from PySide6.QtCore import QAbstractNativeEventFilter
 from PySide6.QtWidgets import QApplication
 
-from overlay.screen_clock import Rect, ScreenClock
+from overlay.config import OverlayConfig
+from overlay.screen_clock import ScreenClock
 from overlay.ui.main_window import MainWindow
 
 user32 = ctypes.windll.user32
@@ -45,6 +47,17 @@ class HotkeyFilterWin(QAbstractNativeEventFilter):
         return False, 0
 
 
+def _load_config_or_die() -> OverlayConfig:
+    path = OverlayConfig.default_path()
+    if not path.exists():
+        raise SystemExit(
+            f"Missing config file: {path}\n"
+            "Create it (or run the calibrator) with:\n"
+            '  { "clock_rect": { "x": 0, "y": 0, "w": 0, "h": 0 } }\n'
+        )
+    return OverlayConfig.load(path)
+
+
 def main() -> int:
     app = QApplication(sys.argv)
 
@@ -56,8 +69,9 @@ def main() -> int:
     hk_filter = HotkeyFilterWin(app)
     app.installNativeEventFilter(hk_filter)
 
-    rect = Rect(x=267, y=775, w=64, h=25)
-    clock = ScreenClock(rect=rect, poll_hz=10.0)
+    cfg = _load_config_or_die()
+
+    clock = ScreenClock(rect=cfg.clock_rect, poll_hz=10.0, game_speed_multiplier=1.4, time_offset_s=1)
     clock.start()
 
     win = MainWindow(clock=clock)
