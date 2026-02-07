@@ -1,0 +1,69 @@
+{
+  "missions": {
+    "default": {
+      "name": "Default (placeholder)",
+      "events": [
+        { "type": "main_objective", "time_s": 240 },
+        { "type": "main_objective", "time_s": 480 },
+        { "type": "main_objective", "time_s": 720 },
+
+        { "type": "bonus_objective", "time_s": 300 },
+        { "type": "bonus_objective", "time_s": 600 },
+
+        { "type": "escort", "time_s": 150 },
+
+        { "type": "attack", "time_s": 120, "arrow": "←" },
+        { "type": "attack", "time_s": 240, "arrow": "→" },
+        { "type": "attack", "time_s": 360 },
+        { "type": "attack", "time_s": 480 },
+        { "type": "attack", "time_s": 600 },
+
+        { "type": "warp_in", "time_s": 180 },
+        { "type": "warp_in", "time_s": 300 },
+
+        { "type": "drop_pods", "time_s": 210 },
+        { "type": "drop_pods", "time_s": 390 }
+      ]
+    },
+
+    "chain_of_ascension": {
+      "name": "Chain of Ascension",
+      "events": [
+        { "type": "escort", "time_s": 210 },
+        { "type": "escort", "time_s": 300 },
+        { "type": "escort", "time_s": 420 },
+        { "type": "escort", "time_s": 540 },
+        { "type": "escort", "time_s": 660 },
+        { "type": "escort", "time_s": 720 },
+        { "type": "escort", "time_s": 780 },
+        { "type": "escort", "time_s": 900 },
+        { "type": "escort", "time_s": 960 },
+        { "type": "escort", "time_s": 990 },
+        { "type": "escort", "time_s": 1050 },
+        { "type": "escort", "time_s": 1110 },
+        { "type": "escort", "time_s": 1140 },
+        { "type": "escort", "time_s": 1200 },
+        { "type": "escort", "time_s": 1230 },
+        { "type": "escort", "time_s": 1290 },
+        { "type": "escort", "time_s": 1320 },
+        { "type": "escort", "time_s": 1380 },
+        { "type": "escort", "time_s": 1440 },
+        { "type": "escort", "time_s": 1500 },
+        { "type": "escort", "time_s": 1530 },
+        { "type": "escort", "time_s": 1560 },
+        { "type": "escort", "time_s": 1620 },
+
+        { "type": "attack", "time_s": 390 },
+        { "type": "attack", "time_s": 600 },
+        { "type": "attack", "time_s": 840 },
+        { "type": "attack", "time_s": 1020 },
+        { "type": "attack", "time_s": 1260 },
+        { "type": "attack", "time_s": 1470 },
+        { "type": "attack", "time_s": 1710 },
+
+        { "type": "bonus_objective", "time_s": 600 },
+        { "type": "bonus_objective", "time_s": 960 }
+      ]
+    }
+  }
+}
