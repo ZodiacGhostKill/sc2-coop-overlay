@@ -250,9 +250,9 @@ def _load_mission_db_or_default() -> MissionDB:
 
 
 def _pick_mission(db: MissionDB) -> Mission:
-    # TEMP: lock to Chain of Ascension while we ingest data.
+    # TEMP: lock to Cradle of Death while we ingest data.
     # We'll add a proper mission selector once multiple missions are populated.
-    return db.get("chain_of_ascension")
+    return db.get("cradle_of_death")
 
 
 class MainWindow(QWidget):
