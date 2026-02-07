@@ -2,6 +2,7 @@
   "missions": {
     "default": {
       "name": "Default (placeholder)",
+      "duration_s": 721,
       "events": [
         { "type": "main_objective", "time_s": 240 },
         { "type": "main_objective", "time_s": 480 },
@@ -28,6 +29,7 @@
 
     "chain_of_ascension": {
       "name": "Chain of Ascension",
+      "duration_s": 1711,
       "events": [
         { "type": "escort", "time_s": 210 },
         { "type": "escort", "time_s": 300 },
