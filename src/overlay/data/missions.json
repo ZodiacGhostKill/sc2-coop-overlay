@@ -66,6 +66,23 @@
         { "type": "bonus_objective", "time_s": 600 },
         { "type": "bonus_objective", "time_s": 960 }
       ]
+    },
+
+    "cradle_of_death": {
+      "name": "Cradle of Death",
+      "duration_s": 1741,
+      "events": [
+        { "type": "attack", "time_s": 240 },
+        { "type": "attack", "time_s": 360 },
+        { "type": "attack", "time_s": 540 },
+        { "type": "attack", "time_s": 720 },
+        { "type": "attack", "time_s": 900 },
+        { "type": "attack", "time_s": 1080 },
+        { "type": "attack", "time_s": 1260 },
+        { "type": "attack", "time_s": 1500 },
+        { "type": "attack", "time_s": 1740 }
+      ]
     }
   }
 }
+
